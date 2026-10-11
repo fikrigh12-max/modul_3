@@ -1,14 +1,13 @@
-from models.buku_model import BukuModel
+from models.anggota_model import AnggotaModel
 
-model = BukuModel()
+anggota = AnggotaModel()
 
-# 1. Menguji fungsi Create (menambah buku baru)
-print("Menambahkan data buku...")
-model.create_buku("Pemrograman Python MVC", "Guido van Rossum", 2023)
-print("Data berhasil disimpan ke Laragon MySQL!")
+# Mengirimkan 3 parameter: id_anggota, nama, alamat
+anggota.create_anggota("6", "Jaki", "Jl. Thamrin")
+print("Data anggota berhasil ditambahkan!")
 
-# 2. Menguji fungsi Read (menampilkan data)
-print("\n=== Daftar Buku ===")
-daftar_buku = model.get_all_buku()
-for buku in daftar_buku:
-    print(f"[{buku['id_buku']}] {buku['judul']} - {buku['penulis']} ({buku['tahun_terbit']})")
+# Menampilkan daftar anggota terbaru
+print("=== Daftar Anggota ===")
+daftar_anggota = anggota.get_all_anggota()
+for a in daftar_anggota:
+    print(f"[{a['id_anggota']}] {a['nama']} - {a['alamat']}")
