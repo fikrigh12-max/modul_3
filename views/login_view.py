@@ -1,6 +1,5 @@
 import customtkinter as ctk
 
-
 class LoginView(ctk.CTk):
     def __init__(self):
         super().__init__()

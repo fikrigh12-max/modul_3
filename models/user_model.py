@@ -27,3 +27,31 @@ class UserModel:
             return user
 
         return None
+    
+def register_user(self, username, password, role):
+    if self.conn:
+        cursor = self.conn.cursor()
+
+        password_hash = self.hash_password(password)
+
+        query = """
+            INSERT INTO users (username, password, role)
+            VALUES (%s, %s, %s)
+        """
+
+        try:
+            cursor.execute(
+                query,
+                (username, password_hash, role)
+            )
+            self.conn.commit()
+            cursor.close()
+            return True
+
+        except Exception as e:
+            self.conn.rollback()
+            cursor.close()
+            print("Gagal mendaftarkan user:", e)
+            return False
+
+    return False
